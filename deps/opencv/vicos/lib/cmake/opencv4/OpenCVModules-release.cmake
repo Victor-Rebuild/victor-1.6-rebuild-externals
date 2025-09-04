@@ -55,16 +55,6 @@ set_target_properties(opencv_photo PROPERTIES
 list(APPEND _IMPORT_CHECK_TARGETS opencv_photo )
 list(APPEND _IMPORT_CHECK_FILES_FOR_opencv_photo "${_IMPORT_PREFIX}/lib/libopencv_photo.so.4.12.0" )
 
-# Import target "opencv_dnn" for configuration "Release"
-set_property(TARGET opencv_dnn APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
-set_target_properties(opencv_dnn PROPERTIES
-  IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/libopencv_dnn.so.4.12.0"
-  IMPORTED_SONAME_RELEASE "libopencv_dnn.so.412"
-  )
-
-list(APPEND _IMPORT_CHECK_TARGETS opencv_dnn )
-list(APPEND _IMPORT_CHECK_FILES_FOR_opencv_dnn "${_IMPORT_PREFIX}/lib/libopencv_dnn.so.4.12.0" )
-
 # Import target "opencv_features2d" for configuration "Release"
 set_property(TARGET opencv_features2d APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(opencv_features2d PROPERTIES
