@@ -1,0 +1,67 @@
+[
+  {
+    "layerName" : "Dealer_1",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "DealerCardSlot_1",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 120,
+        "y": -50,
+        "width": 49,
+        "height": 98
+      }
+    ]
+  },
+  {
+    "layerName" : "Dealer_2",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "DealerCardSlot_2",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 96,
+        "y": -50,
+        "width": 49,
+        "height": 98
+      }
+    ]
+  },
+  {
+    "layerName" : "Dealer_3",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "DealerCardSlot_3",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 72,
+        "y": -50,
+        "width": 49,
+        "height": 98
+      }
+    ]
+  },
+  {
+    "layerName" : "Dealer_4",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "DealerCardSlot_4",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 48,
+        "y": -50,
+        "width": 49,
+        "height": 98
+      }
+    ]
+  },
+  {
+    "layerName" : "Dealer_5",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "DealerCardSlot_5",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 24,
+        "y": -50,
+        "width": 49,
+        "height": 98
+      }
+    ]
+  }
+]

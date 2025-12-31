@@ -1,0 +1,80 @@
+[
+  {
+    "layerName" : "Player_1",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "PlayerCardSlot_1",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 1,
+        "y": -11,
+        "width": 45,
+        "height": 94
+      }
+    ]
+  },
+  {
+    "layerName" : "Player_2",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "PlayerCardSlot_2",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 25,
+        "y": -11,
+        "width": 45,
+        "height": 94
+      }
+    ]
+  },
+  {
+    "layerName" : "Player_3",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "PlayerCardSlot_3",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 49,
+        "y": -11,
+        "width": 45,
+        "height": 94
+      }
+    ]
+  },
+  {
+    "layerName" : "Player_4",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "PlayerCardSlot_4",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 71,
+        "y": -11,
+        "width": 45,
+        "height": 94
+      }
+    ]
+  },
+  {
+    "layerName" : "Player_5",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "PlayerCardSlot_5",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 95,
+        "y": -11,
+        "width": 45,
+        "height": 94
+      }
+    ]
+  },
+  {
+    "layerName" : "PlayerCardOverlay",
+    "spriteBoxLayout" : [
+      {
+        "spriteBoxName" : "PlayerCardOverlay",
+        "spriteRenderMethod" : "CustomHue",
+        "x": 8,
+        "y": 0,
+        "width": 160,
+        "height": 80
+      }
+    ]
+  }
+]
