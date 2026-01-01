@@ -5,24 +5,24 @@
       {
         "spriteBoxName": "TemperatureTensDigit",
         "spriteRenderMethod" : "CustomHue",
-        "x": 32,
-        "y": 27,
+        "x": 24,
+        "y": 15,
         "width": 45,
         "height": 69
       },
       {
         "spriteBoxName": "TemperatureOnesDigit",
         "spriteRenderMethod" : "CustomHue",
-        "x": 77,
-        "y": 27,
+        "x": 69,
+        "y": 15,
         "width": 45,
         "height": 69
       },
       {
         "spriteBoxName": "TemperatureDegreeIndicator",
         "spriteRenderMethod" : "CustomHue",
-        "x": 122,
-        "y": 27,
+        "x": 114,
+        "y": 15,
         "width": 29,
         "height": 69
       }
