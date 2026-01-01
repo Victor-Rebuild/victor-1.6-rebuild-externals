@@ -1,4 +1,4 @@
 *.DS_Store
-*anim_manifest.json
+*anim*.json
 deps/
 *.bin

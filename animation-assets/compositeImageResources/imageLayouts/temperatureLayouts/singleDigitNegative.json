@@ -6,7 +6,7 @@
         "spriteBoxName": "TemperatureNegativeIndicator",
         "spriteRenderMethod" : "CustomHue",
         "x": 40,
-        "y": 27,
+        "y": 15,
         "width": 29,
         "height": 69
       },
@@ -14,7 +14,7 @@
         "spriteBoxName": "TemperatureOnesDigit",
         "spriteRenderMethod" : "CustomHue",
         "x": 69,
-        "y": 27,
+        "y": 15,
         "width": 45,
         "height": 69
       },
@@ -22,7 +22,7 @@
         "spriteBoxName": "TemperatureDegreeIndicator",
         "spriteRenderMethod" : "CustomHue",
         "x": 114,
-        "y": 27,
+        "y": 15,
         "width": 29,
         "height": 69
       }
