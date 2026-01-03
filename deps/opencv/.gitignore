@@ -1,5 +1,2 @@
-!*.a
-!*.dylib
-!*.so
 !*.jar
 !filelist
