@@ -1,9 +1,9 @@
 Name: AlexaClientSDK
 Description: A cross-platform, modular SDK for interacting with the Alexa Voice Service
-Version: 1.11.0
+Version: 1.20.1
 Requires: libcurl sqlite3
-prefix=/home/kerigan/projects/NDA/build-tools/dist/avs-device-sdk/vicos
+prefix=/home/raj-jyot/Vector/avs-build/install
 includedir=${prefix}/include
 libdir=${prefix}/lib
-Libs: -L${libdir} -lAVSCommon -lACL -lADSL -lAFML -lDeviceSettings -lEqualizerImplementations -lCertifiedSender -lContextManager -lCapabilitiesDelegate -lPlaylistParser -lKWD -lAIP -lAlerts -lAudioPlayer -lBluetooth -lDoNotDisturbCA -lEqualizer -lExternalMediaPlayer -lInteractionModel -lMRM -lNotifications -lPlaybackController -lSpeakerManager -lSpeechSynthesizer -lSettings -lAVSSystem -lTemplateRuntime -lDefaultClient -lAudioResources -lESP -lRegistrationManager -lCBLAuthDelegate -lSpeechEncoder -lSQLiteStorage
+Libs: -L${libdir} -lacsdkAlerts -lacsdkAudioPlayer -lacsdkBluetooth -lacsdkDoNotDisturb -lacsdkMultiRoomMusic -lacsdkNotifications -lacsdkDefaultSampleApplicationOptions -lAVSCommon -lACL -lADSL -lAFML -lCaptions -lCaptionsLib -lacsdkCore -lAVSGatewayManager -lCertifiedSender -lEndpoints -lDeviceSettings -lEqualizerImplementations -lContextManager -lCapabilitiesDelegate -lInterruptModel -lPlaylistParser -lKWD -lAIP -lAlexa -lApiGateway -lEqualizer -lExternalMediaPlayer -lInteractionModel -lPlaybackController -lSoftwareComponentReporter -lSpeakerManager -lSpeechSynthesizer -lAVSSystem -lTemplateRuntime -lCBLAuthDelegate -lDefaultClient -lAudioResources -lSystemSoundPlayer -lSDKComponent -lRegistrationManager -lacsdkManufactory -lacsdkShared -lSpeechEncoder -lSQLiteStorage -lSynchronizeStateSender
 Cflags: -I${includedir}

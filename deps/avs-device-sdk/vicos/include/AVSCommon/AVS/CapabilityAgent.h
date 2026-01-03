@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -11,10 +11,6 @@
  * on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
- */
-
- /*
- <ANKI></ANKI> modifications copyright (C) 2018 Anki, Inc.
  */
 
 #ifndef ALEXA_CLIENT_SDK_AVSCOMMON_AVS_INCLUDE_AVSCOMMON_AVS_CAPABILITYAGENT_H_
@@ -53,12 +49,6 @@ class CapabilityAgent
         , public sdkInterfaces::ChannelObserverInterface
         , public sdkInterfaces::StateProviderInterface
         , public sdkInterfaces::ContextRequesterInterface {
-
-// <ANKI>
-protected:
-    class DirectiveInfo;
-// </ANKI>
-
 public:
     /**
      * Destructor.
@@ -84,20 +74,7 @@ public:
 
     void onDeregistered() override;
 
-    void onFocusChanged(FocusState newFocus) override;
-
-    void provideState(const avsCommon::avs::NamespaceAndName& stateProviderName, const unsigned int stateRequestToken)
-        override;
-
-    void onContextAvailable(const std::string& jsonContext) override;
-
-    void onContextFailure(const sdkInterfaces::ContextRequestError error) override;
-
-    // <ANKI> (These used to be protected. Now they're public to get directive info for debugging)
-    virtual void preHandleDirective(std::shared_ptr<DirectiveInfo> info) = 0;
-    virtual void handleDirective(std::shared_ptr<DirectiveInfo> info) = 0;
-    virtual void cancelDirective(std::shared_ptr<DirectiveInfo> info) = 0;
-    // </ANKI>
+    void onFocusChanged(FocusState newFocus, MixingBehavior behavior) override;
 
 protected:
     /**
@@ -167,9 +144,7 @@ protected:
      *
      * @param info The @c DirectiveInfo instance for the @c AVSDirective to process.
      */
-    // <ANKI> (made public)
-    //virtual void preHandleDirective(std::shared_ptr<DirectiveInfo> info) = 0;
-    // </ANKI>
+    virtual void preHandleDirective(std::shared_ptr<DirectiveInfo> info) = 0;
 
     /**
      * Handle the action specified by the @c AVSDirective in @c info. The handling of subsequent directives with
@@ -183,9 +158,7 @@ protected:
      *
      * @param info The @c DirectiveInfo instance for the @c AVSDirective to process.
      */
-    // <ANKI> (made public)
-    //virtual void handleDirective(std::shared_ptr<DirectiveInfo> info) = 0;
-    // </ANKI>
+    virtual void handleDirective(std::shared_ptr<DirectiveInfo> info) = 0;
 
     /**
      * Cancel an ongoing @c preHandleDirective() or @c handleDirective() operation for the @c AVSDirective in
@@ -198,9 +171,7 @@ protected:
      *
      * @param info The @c DirectiveInfo instance for the @c AVSDirective to process.
      */
-    // <ANKI> (made public)
-    //virtual void cancelDirective(std::shared_ptr<DirectiveInfo> info) = 0;
-    // </ANKI>
+    virtual void cancelDirective(std::shared_ptr<DirectiveInfo> info) = 0;
 
     /**
      * This function releases resources associated with the @c AVSDirective which is no longer in use by a
@@ -242,7 +213,7 @@ protected:
         const std::string& eventName,
         const std::string& dialogRequestIdString = "",
         const std::string& payload = "{}",
-        const std::string& context = "");
+        const std::string& context = "") const;
 
     /// The namespace of the capability agent.
     const std::string m_namespace;

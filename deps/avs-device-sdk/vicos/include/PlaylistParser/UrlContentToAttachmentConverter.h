@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -43,9 +43,28 @@ public:
     class ErrorObserverInterface {
     public:
         /**
+         * Destructor.
+         */
+        virtual ~ErrorObserverInterface() = default;
+
+        /**
          * Notification that an error has occurred in the streaming of content.
          */
         virtual void onError() = 0;
+    };
+
+    /// Class to allow notification when writing to the attachment is complete
+    class WriteCompleteObserverInterface {
+    public:
+        /**
+         * Destructor.
+         */
+        virtual ~WriteCompleteObserverInterface() = default;
+
+        /**
+         * Notification that the attachement has had all data written to it
+         */
+        virtual void onWriteComplete() = 0;
     };
 
     /**
@@ -61,6 +80,9 @@ public:
      * @param startTime The desired time to attempt to start streaming from. Note that this will only succeed
      * in cases where the URL points to a playlist with metadata about individual chunks within it. If none are found,
      * streaming will begin from the beginning.
+     * @param writeCompleteObserver An observer to be notified when data written to the attachment is complete.
+     * Optional.
+     * @param numOfReaders Maximum number of readers to this contentFetcher.
      * @return A @c std::shared_ptr to the new @c UrlContentToAttachmentConverter object or @c nullptr on failure.
      *
      * @note This object is intended to be used once. Subsequent calls to @c convertPlaylistToAttachment() will fail.
@@ -69,7 +91,9 @@ public:
         std::shared_ptr<avsCommon::sdkInterfaces::HTTPContentFetcherInterfaceFactoryInterface> contentFetcherFactory,
         const std::string& url,
         std::shared_ptr<ErrorObserverInterface> observer,
-        std::chrono::milliseconds startTime = std::chrono::milliseconds::zero());
+        std::chrono::milliseconds startTime = std::chrono::milliseconds::zero(),
+        std::shared_ptr<WriteCompleteObserverInterface> writeCompleteObserver = nullptr,
+        size_t numOfReaders = 1);
 
     /**
      * Returns the attachment into which the URL content was streamed into.
@@ -104,12 +128,17 @@ private:
      * @param desiredStartTime The desired time to attempt to start streaming from. Note that this will only succeed
      * in cases where the URL points to a playlist with metadata about individual chunks within it. If none are found,
      * streaming will begin from the beginning.
+     * @param writeCompleteObserver An observer to be notified when data written to the attachment is complete.
+     * Optional.
+     * @param numOfReaders Maximum number of readers to this contentFetcher.
      */
     UrlContentToAttachmentConverter(
         std::shared_ptr<avsCommon::sdkInterfaces::HTTPContentFetcherInterfaceFactoryInterface> contentFetcherFactory,
         const std::string& url,
         std::shared_ptr<ErrorObserverInterface> observer,
-        std::chrono::milliseconds startTime);
+        std::chrono::milliseconds startTime,
+        std::shared_ptr<WriteCompleteObserverInterface> writeCompleteObserver,
+        size_t numOfReaders);
 
     void onPlaylistEntryParsed(int requestId, avsCommon::utils::playlistParser::PlaylistEntry playlistEntry) override;
 
@@ -117,6 +146,11 @@ private:
      * Notify the observer that an error has occured.
      **/
     void notifyError();
+
+    /**
+     * Notify the observer that writing has completed.
+     **/
+    void notifyWriteComplete();
 
     /**
      * @name Executor Thread Functions
@@ -133,12 +167,14 @@ private:
      * @param url The URL to download.
      * @param headers HTTP headers to pass to server.
      * @param encryptionInfo The Encryption info for the URL to download.
+     * @param contentFetcher The content fetcher to use to retrieve content. Can be a null pointer.
      * @return @c true if the content was successfully streamed and written or @c false otherwise.
      */
     bool writeDecryptedUrlContentIntoStream(
         std::string url,
         std::vector<std::string> headers,
-        avsCommon::utils::playlistParser::EncryptionInfo encryptionInfo);
+        avsCommon::utils::playlistParser::EncryptionInfo encryptionInfo,
+        std::shared_ptr<avsCommon::sdkInterfaces::HTTPContentFetcherInterface> contentFetcher);
 
     /**
      * Downloads the content from the url and writes to the stream.
@@ -146,12 +182,14 @@ private:
      * @param url The URL to download.
      * @param headers HTTP headers to pass to server.
      * @param streamWriter The attachment writer to write downloaded content.
+     * @param contentFetcher The content fetcher to use to retrieve content. Can be a null pointer.
      * @return @c true if the content was successfully downloaded or @c false otherwise.
      */
     bool download(
         const std::string& url,
         const std::vector<std::string>& headers,
-        std::shared_ptr<avsCommon::avs::attachment::AttachmentWriter> streamWriter);
+        std::shared_ptr<avsCommon::avs::attachment::AttachmentWriter> streamWriter,
+        std::shared_ptr<avsCommon::sdkInterfaces::HTTPContentFetcherInterface> contentFetcher);
 
     /**
      * Downloads the content from the url to unsigned char vector.
@@ -159,9 +197,14 @@ private:
      * @param url The URL to download.
      * @param headers HTTP headers to pass to server.
      * @param[out] content Sets the content of the pointer if download is successful.
+     * @param contentFetcher The content fetcher to use to retrieve content. Can be a null pointer.
      * @return @c true if the content was successfully downloaded or @c false otherwise.
      */
-    bool download(const std::string& url, const std::vector<std::string>& headers, ByteVector* content);
+    bool download(
+        const std::string& url,
+        const std::vector<std::string>& headers,
+        ByteVector* content,
+        std::shared_ptr<avsCommon::sdkInterfaces::HTTPContentFetcherInterface> contentFetcher);
 
     /**
      * Reads content from the reader to unsigned char vector.
@@ -204,6 +247,9 @@ private:
 
     /// The observer to be notified of errors.
     std::shared_ptr<ErrorObserverInterface> m_observer;
+
+    /// The observer for write complete
+    std::shared_ptr<WriteCompleteObserverInterface> m_writeCompleteObserver;
 
     /// Used to serialize access to m_observer.
     std::mutex m_mutex;
