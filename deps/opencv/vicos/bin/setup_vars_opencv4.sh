@@ -2,7 +2,7 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-[[ ! "${OPENCV_QUIET}" ]] && ( echo "Setting vars for OpenCV 4.12.0" )
+[[ ! "${OPENCV_QUIET}" ]] && ( echo "Setting vars for OpenCV 4.13.0" )
 export LD_LIBRARY_PATH="$SCRIPT_DIR/../lib:$LD_LIBRARY_PATH"
 
 if [[ ! "$OPENCV_SKIP_PYTHON" ]]; then
