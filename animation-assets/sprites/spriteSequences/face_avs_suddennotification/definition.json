@@ -1,18 +1,21 @@
-
 {
-  "loop" : "doNothing", 
-  "sequence" :[
+  "loop": "doNothing",
+  "sequence": [
     {
-      "segmentType" : "straightThrough",
-      // file names relative to folder
+      "segmentType": "straightThrough",
       "fileList": [
         "face_avs_suddennotification_0000.png",
         "face_avs_suddennotification_0001.png",
         "face_avs_suddennotification_0002.png",
         "face_avs_suddennotification_0003.png",
         "face_avs_suddennotification_0004.png",
-        "face_avs_suddennotification_0005.png"
-
+        "face_avs_suddennotification_0005.png",
+        "face_avs_suddennotification_0006.png",
+        "face_avs_suddennotification_0007.png",
+        "face_avs_suddennotification_0008.png",
+        "face_avs_suddennotification_0009.png",
+        "face_avs_suddennotification_0010.png",
+        "face_avs_suddennotification_0011.png"
       ]
     }
   ]

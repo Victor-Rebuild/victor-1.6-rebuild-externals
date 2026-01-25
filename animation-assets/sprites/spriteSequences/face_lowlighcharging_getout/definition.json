@@ -1,10 +1,8 @@
-
 {
-  "loop" : "doNothing", 
-  "sequence" :[
+  "loop": "doNothing",
+  "sequence": [
     {
-      "segmentType" : "straightThrough",
-      // file names relative to folder
+      "segmentType": "straightThrough",
       "fileList": [
         "face_lowlighcharging_getout_00000.png",
         "face_lowlighcharging_getout_00001.png",
@@ -59,8 +57,61 @@
         "face_lowlighcharging_getout_00050.png",
         "face_lowlighcharging_getout_00051.png",
         "face_lowlighcharging_getout_00052.png",
-        "face_lowlighcharging_getout_00053.png"
-
+        "face_lowlighcharging_getout_00053.png",
+        "face_lowlighcharging_getout_00054.png",
+        "face_lowlighcharging_getout_00055.png",
+        "face_lowlighcharging_getout_00056.png",
+        "face_lowlighcharging_getout_00057.png",
+        "face_lowlighcharging_getout_00058.png",
+        "face_lowlighcharging_getout_00059.png",
+        "face_lowlighcharging_getout_00060.png",
+        "face_lowlighcharging_getout_00061.png",
+        "face_lowlighcharging_getout_00062.png",
+        "face_lowlighcharging_getout_00063.png",
+        "face_lowlighcharging_getout_00064.png",
+        "face_lowlighcharging_getout_00065.png",
+        "face_lowlighcharging_getout_00066.png",
+        "face_lowlighcharging_getout_00067.png",
+        "face_lowlighcharging_getout_00068.png",
+        "face_lowlighcharging_getout_00069.png",
+        "face_lowlighcharging_getout_00070.png",
+        "face_lowlighcharging_getout_00071.png",
+        "face_lowlighcharging_getout_00072.png",
+        "face_lowlighcharging_getout_00073.png",
+        "face_lowlighcharging_getout_00074.png",
+        "face_lowlighcharging_getout_00075.png",
+        "face_lowlighcharging_getout_00076.png",
+        "face_lowlighcharging_getout_00077.png",
+        "face_lowlighcharging_getout_00078.png",
+        "face_lowlighcharging_getout_00079.png",
+        "face_lowlighcharging_getout_00080.png",
+        "face_lowlighcharging_getout_00081.png",
+        "face_lowlighcharging_getout_00082.png",
+        "face_lowlighcharging_getout_00083.png",
+        "face_lowlighcharging_getout_00084.png",
+        "face_lowlighcharging_getout_00085.png",
+        "face_lowlighcharging_getout_00086.png",
+        "face_lowlighcharging_getout_00087.png",
+        "face_lowlighcharging_getout_00088.png",
+        "face_lowlighcharging_getout_00089.png",
+        "face_lowlighcharging_getout_00090.png",
+        "face_lowlighcharging_getout_00091.png",
+        "face_lowlighcharging_getout_00092.png",
+        "face_lowlighcharging_getout_00093.png",
+        "face_lowlighcharging_getout_00094.png",
+        "face_lowlighcharging_getout_00095.png",
+        "face_lowlighcharging_getout_00096.png",
+        "face_lowlighcharging_getout_00097.png",
+        "face_lowlighcharging_getout_00098.png",
+        "face_lowlighcharging_getout_00099.png",
+        "face_lowlighcharging_getout_00100.png",
+        "face_lowlighcharging_getout_00101.png",
+        "face_lowlighcharging_getout_00102.png",
+        "face_lowlighcharging_getout_00103.png",
+        "face_lowlighcharging_getout_00104.png",
+        "face_lowlighcharging_getout_00105.png",
+        "face_lowlighcharging_getout_00106.png",
+        "face_lowlighcharging_getout_00107.png"
       ]
     }
   ]

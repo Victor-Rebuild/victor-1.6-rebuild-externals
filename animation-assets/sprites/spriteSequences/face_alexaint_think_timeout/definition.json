@@ -1,10 +1,8 @@
-
 {
-  "loop" : "doNothing", 
-  "sequence" :[
+  "loop": "doNothing",
+  "sequence": [
     {
-      "segmentType" : "straightThrough",
-      // file names relative to folder
+      "segmentType": "straightThrough",
       "fileList": [
         "face_alexaint_think_timeout_0000.png",
         "face_alexaint_think_timeout_0001.png",
@@ -15,8 +13,17 @@
         "face_alexaint_think_timeout_0006.png",
         "face_alexaint_think_timeout_0007.png",
         "face_alexaint_think_timeout_0008.png",
-        "face_alexaint_think_timeout_0009.png"
-
+        "face_alexaint_think_timeout_0009.png",
+        "face_alexaint_think_timeout_0010.png",
+        "face_alexaint_think_timeout_0011.png",
+        "face_alexaint_think_timeout_0012.png",
+        "face_alexaint_think_timeout_0013.png",
+        "face_alexaint_think_timeout_0014.png",
+        "face_alexaint_think_timeout_0015.png",
+        "face_alexaint_think_timeout_0016.png",
+        "face_alexaint_think_timeout_0017.png",
+        "face_alexaint_think_timeout_0018.png",
+        "face_alexaint_think_timeout_0019.png"
       ]
     }
   ]
