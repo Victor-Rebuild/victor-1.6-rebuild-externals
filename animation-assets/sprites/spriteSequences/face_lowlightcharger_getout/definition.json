@@ -1,8 +1,10 @@
+
 {
-  "loop": "doNothing",
-  "sequence": [
+  "loop" : "doNothing", 
+  "sequence" :[
     {
-      "segmentType": "straightThrough",
+      "segmentType" : "straightThrough",
+      // file names relative to folder
       "fileList": [
         "face_lowlightcharger_getout_00000.png",
         "face_lowlightcharger_getout_00001.png",
@@ -36,40 +38,8 @@
         "face_lowlightcharger_getout_00029.png",
         "face_lowlightcharger_getout_00030.png",
         "face_lowlightcharger_getout_00031.png",
-        "face_lowlightcharger_getout_00032.png",
-        "face_lowlightcharger_getout_00033.png",
-        "face_lowlightcharger_getout_00034.png",
-        "face_lowlightcharger_getout_00035.png",
-        "face_lowlightcharger_getout_00036.png",
-        "face_lowlightcharger_getout_00037.png",
-        "face_lowlightcharger_getout_00038.png",
-        "face_lowlightcharger_getout_00039.png",
-        "face_lowlightcharger_getout_00040.png",
-        "face_lowlightcharger_getout_00041.png",
-        "face_lowlightcharger_getout_00042.png",
-        "face_lowlightcharger_getout_00043.png",
-        "face_lowlightcharger_getout_00044.png",
-        "face_lowlightcharger_getout_00045.png",
-        "face_lowlightcharger_getout_00046.png",
-        "face_lowlightcharger_getout_00047.png",
-        "face_lowlightcharger_getout_00048.png",
-        "face_lowlightcharger_getout_00049.png",
-        "face_lowlightcharger_getout_00050.png",
-        "face_lowlightcharger_getout_00051.png",
-        "face_lowlightcharger_getout_00052.png",
-        "face_lowlightcharger_getout_00053.png",
-        "face_lowlightcharger_getout_00054.png",
-        "face_lowlightcharger_getout_00055.png",
-        "face_lowlightcharger_getout_00056.png",
-        "face_lowlightcharger_getout_00057.png",
-        "face_lowlightcharger_getout_00058.png",
-        "face_lowlightcharger_getout_00059.png",
-        "face_lowlightcharger_getout_00060.png",
-        "face_lowlightcharger_getout_00061.png",
-        "face_lowlightcharger_getout_00062.png",
-        "face_lowlightcharger_getout_00063.png",
-        "face_lowlightcharger_getout_00064.png",
-        "face_lowlightcharger_getout_00065.png"
+        "face_lowlightcharger_getout_00032.png"
+
       ]
     }
   ]

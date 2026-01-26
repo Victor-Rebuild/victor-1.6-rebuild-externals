@@ -1,8 +1,10 @@
+
 {
-  "loop": "doNothing",
-  "sequence": [
+  "loop" : "doNothing", 
+  "sequence" :[
     {
-      "segmentType": "straightThrough",
+      "segmentType" : "straightThrough",
+      // file names relative to folder
       "fileList": [
         "face_powersavemode_0000.png",
         "face_powersavemode_0001.png",
@@ -46,50 +48,8 @@
         "face_powersavemode_0039.png",
         "face_powersavemode_0040.png",
         "face_powersavemode_0041.png",
-        "face_powersavemode_0042.png",
-        "face_powersavemode_0043.png",
-        "face_powersavemode_0044.png",
-        "face_powersavemode_0045.png",
-        "face_powersavemode_0046.png",
-        "face_powersavemode_0047.png",
-        "face_powersavemode_0048.png",
-        "face_powersavemode_0049.png",
-        "face_powersavemode_0050.png",
-        "face_powersavemode_0051.png",
-        "face_powersavemode_0052.png",
-        "face_powersavemode_0053.png",
-        "face_powersavemode_0054.png",
-        "face_powersavemode_0055.png",
-        "face_powersavemode_0056.png",
-        "face_powersavemode_0057.png",
-        "face_powersavemode_0058.png",
-        "face_powersavemode_0059.png",
-        "face_powersavemode_0060.png",
-        "face_powersavemode_0061.png",
-        "face_powersavemode_0062.png",
-        "face_powersavemode_0063.png",
-        "face_powersavemode_0064.png",
-        "face_powersavemode_0065.png",
-        "face_powersavemode_0066.png",
-        "face_powersavemode_0067.png",
-        "face_powersavemode_0068.png",
-        "face_powersavemode_0069.png",
-        "face_powersavemode_0070.png",
-        "face_powersavemode_0071.png",
-        "face_powersavemode_0072.png",
-        "face_powersavemode_0073.png",
-        "face_powersavemode_0074.png",
-        "face_powersavemode_0075.png",
-        "face_powersavemode_0076.png",
-        "face_powersavemode_0077.png",
-        "face_powersavemode_0078.png",
-        "face_powersavemode_0079.png",
-        "face_powersavemode_0080.png",
-        "face_powersavemode_0081.png",
-        "face_powersavemode_0082.png",
-        "face_powersavemode_0083.png",
-        "face_powersavemode_0084.png",
-        "face_powersavemode_0085.png"
+        "face_powersavemode_0042.png"
+
       ]
     }
   ]

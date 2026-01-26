@@ -1,8 +1,10 @@
+
 {
-  "loop": "doNothing",
-  "sequence": [
+  "loop" : "doNothing", 
+  "sequence" :[
     {
-      "segmentType": "straightThrough",
+      "segmentType" : "straightThrough",
+      // file names relative to folder
       "fileList": [
         "face_shearchforcharger_canthelp_00000.png",
         "face_shearchforcharger_canthelp_00001.png",
@@ -42,46 +44,8 @@
         "face_shearchforcharger_canthelp_00035.png",
         "face_shearchforcharger_canthelp_00036.png",
         "face_shearchforcharger_canthelp_00037.png",
-        "face_shearchforcharger_canthelp_00038.png",
-        "face_shearchforcharger_canthelp_00039.png",
-        "face_shearchforcharger_canthelp_00040.png",
-        "face_shearchforcharger_canthelp_00041.png",
-        "face_shearchforcharger_canthelp_00042.png",
-        "face_shearchforcharger_canthelp_00043.png",
-        "face_shearchforcharger_canthelp_00044.png",
-        "face_shearchforcharger_canthelp_00045.png",
-        "face_shearchforcharger_canthelp_00046.png",
-        "face_shearchforcharger_canthelp_00047.png",
-        "face_shearchforcharger_canthelp_00048.png",
-        "face_shearchforcharger_canthelp_00049.png",
-        "face_shearchforcharger_canthelp_00050.png",
-        "face_shearchforcharger_canthelp_00051.png",
-        "face_shearchforcharger_canthelp_00052.png",
-        "face_shearchforcharger_canthelp_00053.png",
-        "face_shearchforcharger_canthelp_00054.png",
-        "face_shearchforcharger_canthelp_00055.png",
-        "face_shearchforcharger_canthelp_00056.png",
-        "face_shearchforcharger_canthelp_00057.png",
-        "face_shearchforcharger_canthelp_00058.png",
-        "face_shearchforcharger_canthelp_00059.png",
-        "face_shearchforcharger_canthelp_00060.png",
-        "face_shearchforcharger_canthelp_00061.png",
-        "face_shearchforcharger_canthelp_00062.png",
-        "face_shearchforcharger_canthelp_00063.png",
-        "face_shearchforcharger_canthelp_00064.png",
-        "face_shearchforcharger_canthelp_00065.png",
-        "face_shearchforcharger_canthelp_00066.png",
-        "face_shearchforcharger_canthelp_00067.png",
-        "face_shearchforcharger_canthelp_00068.png",
-        "face_shearchforcharger_canthelp_00069.png",
-        "face_shearchforcharger_canthelp_00070.png",
-        "face_shearchforcharger_canthelp_00071.png",
-        "face_shearchforcharger_canthelp_00072.png",
-        "face_shearchforcharger_canthelp_00073.png",
-        "face_shearchforcharger_canthelp_00074.png",
-        "face_shearchforcharger_canthelp_00075.png",
-        "face_shearchforcharger_canthelp_00076.png",
-        "face_shearchforcharger_canthelp_00077.png"
+        "face_shearchforcharger_canthelp_00038.png"
+
       ]
     }
   ]

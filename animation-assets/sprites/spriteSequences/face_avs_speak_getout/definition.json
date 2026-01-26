@@ -1,8 +1,10 @@
+
 {
-  "loop": "doNothing",
-  "sequence": [
+  "loop" : "doNothing", 
+  "sequence" :[
     {
-      "segmentType": "straightThrough",
+      "segmentType" : "straightThrough",
+      // file names relative to folder
       "fileList": [
         "face_avs_speak_getout_0000.png",
         "face_avs_speak_getout_0001.png",
@@ -13,17 +15,8 @@
         "face_avs_speak_getout_0006.png",
         "face_avs_speak_getout_0007.png",
         "face_avs_speak_getout_0008.png",
-        "face_avs_speak_getout_0009.png",
-        "face_avs_speak_getout_0010.png",
-        "face_avs_speak_getout_0011.png",
-        "face_avs_speak_getout_0012.png",
-        "face_avs_speak_getout_0013.png",
-        "face_avs_speak_getout_0014.png",
-        "face_avs_speak_getout_0015.png",
-        "face_avs_speak_getout_0016.png",
-        "face_avs_speak_getout_0017.png",
-        "face_avs_speak_getout_0018.png",
-        "face_avs_speak_getout_0019.png"
+        "face_avs_speak_getout_0009.png"
+
       ]
     }
   ]
