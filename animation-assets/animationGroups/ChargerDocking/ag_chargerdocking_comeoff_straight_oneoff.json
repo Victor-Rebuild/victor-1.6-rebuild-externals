@@ -20,7 +20,13 @@
     },
     {
       "Name": "anim_chargerdocking_comeoff_binaryeyes_01",
-      "Weight": 1.0,
+      "Weight": 0.2,
+      "CooldownTime_Sec": 0.0,
+      "Mood": "Default"
+    },
+    {
+      "Name": "anim_chargerdocking_comeoff_loosepixel_01",
+      "Weight": 0.2,
       "CooldownTime_Sec": 0.0,
       "Mood": "Default"
     }
