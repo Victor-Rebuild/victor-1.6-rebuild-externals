@@ -3,10 +3,10 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
-Name: libmpg123
-Description: An optimised MPEG Audio decoder
+Name: libsyn123
+Description: A signal synthesis library accompanying mpg123
 Requires: 
 Version: 1.33.1-dev
-Libs: -L${libdir} -lmpg123 
-Libs.private: -lm 
+Libs: -L${libdir} -lsyn123 
+Libs.private: -lm
 Cflags: -I${includedir} 
