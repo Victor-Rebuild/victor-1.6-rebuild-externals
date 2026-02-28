@@ -8,7 +8,7 @@
     },
     {
       "Name": "anim_gotosleep_wakeup_falling_01",
-      "Weight": 1.0,
+      "Weight": 0.4,
       "CooldownTime_Sec": 0.0,
       "Mood": "Default"
     }
