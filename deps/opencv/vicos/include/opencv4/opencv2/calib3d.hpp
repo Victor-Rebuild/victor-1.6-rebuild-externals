@@ -220,7 +220,7 @@ Z_w \\
 
 The following figure illustrates the pinhole camera model.
 
-![Pinhole camera model](pics/pinhole_camera_model.png)
+![Pinhole camera model](pics/pinhole_camera_model.png) { width=70% }
 
 Real lenses usually have some distortion, mostly radial distortion, and slight tangential distortion.
 So, the above model is extended as:
@@ -448,7 +448,7 @@ The inverse of an homogeneous transformation matrix is then:
 
 One can note that the inverse of a 3x3 rotation matrix is directly its matrix transpose.
 
-![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.png)
+![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.jpg) { width=70% }
 
 This figure summarizes the whole process. The object pose returned for instance by the @ref solvePnP function
 or pose from fiducial marker detection is this \f$ {}^{c}\mathbf{T}_o \f$ transformation.
@@ -627,7 +627,8 @@ enum { CALIB_NINTRINSIC          = 18,
        // for stereo rectification
        CALIB_ZERO_DISPARITY      = 0x00400,
        CALIB_USE_LU              = (1 << 17), //!< use LU instead of SVD decomposition for solving. much faster but potentially less precise
-       CALIB_USE_EXTRINSIC_GUESS = (1 << 22)  //!< for stereoCalibrate
+       CALIB_USE_EXTRINSIC_GUESS = (1 << 22), //!< for stereoCalibrate
+       CALIB_DISABLE_SCHUR_COMPLEMENT = (1 << 23)  //!< disable Schur complement (use Bouguet calibration engine)
      };
 
 //! the algorithm for finding fundamental matrix
@@ -1012,7 +1013,7 @@ Check @ref tutorial_homography "the corresponding tutorial" for more details
 
 /** @brief Finds an object pose \f$ {}^{c}\mathbf{T}_o \f$ from 3D-2D point correspondences:
 
-![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.png){ width=50% }
+![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.jpg){ width=50% }
 
 @see @ref calib3d_solvePnP
 
@@ -1085,7 +1086,7 @@ CV_EXPORTS_W bool solvePnP( InputArray objectPoints, InputArray imagePoints,
 
 /** @brief Finds an object pose \f$ {}^{c}\mathbf{T}_o \f$ from 3D-2D point correspondences using the RANSAC scheme to deal with bad matches.
 
-![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.png){ width=50% }
+![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.jpg){ width=50% }
 
 @see @ref calib3d_solvePnP
 
@@ -1147,7 +1148,7 @@ CV_EXPORTS_W bool solvePnPRansac( InputArray objectPoints, InputArray imagePoint
 
 /** @brief Finds an object pose \f$ {}^{c}\mathbf{T}_o \f$ from **3** 3D-2D point correspondences.
 
-![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.png){ width=50% }
+![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.jpg){ width=50% }
 
 @see @ref calib3d_solvePnP
 
@@ -1242,7 +1243,7 @@ CV_EXPORTS_W void solvePnPRefineVVS( InputArray objectPoints, InputArray imagePo
 
 /** @brief Finds an object pose \f$ {}^{c}\mathbf{T}_o \f$ from 3D-2D point correspondences.
 
-![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.png){ width=50% }
+![Perspective projection, from object to camera frame](pics/pinhole_homogeneous_transformation.jpg){ width=50% }
 
 @see @ref calib3d_solvePnP
 
@@ -1659,6 +1660,7 @@ fx, fy, cx, cy that are optimized further. Otherwise, (cx, cy) is initially set 
 center ( imageSize is used), and focal distances are computed in a least-squares fashion.
 Note, that if intrinsic parameters are known, there is no need to use this function just to
 estimate extrinsic parameters. Use @ref solvePnP instead.
+-   @ref CALIB_DISABLE_SCHUR_COMPLEMENT Disable Schur complement and use the Bouguet calibration engine (@cite Zhang2000, @cite BouguetMCT).
 -   @ref CALIB_FIX_PRINCIPAL_POINT The principal point is not changed during the global
 optimization. It stays at the center or at a different location specified when
  @ref CALIB_USE_INTRINSIC_GUESS is set too.
@@ -1693,7 +1695,9 @@ supplied distCoeffs matrix is used. Otherwise, it is set to 0.
 @return the overall RMS re-projection error.
 
 The function estimates the intrinsic camera parameters and extrinsic parameters for each of the
-views. The algorithm is based on @cite Zhang2000 and @cite BouguetMCT . The coordinates of 3D object
+views. By default, the optimization follows a sparse bundle adjustment formulation with Schur
+complement; see @cite Triggs2000_bundle_adjustment and @cite Lourakis2009_sba for background. Use
+@ref CALIB_DISABLE_SCHUR_COMPLEMENT to switch to the Bouguet calibration engine. The coordinates of 3D object
 points and their corresponding 2D projections in each view must be specified. That may be achieved
 by using an object with known geometry and easily detectable feature points. Such an object is
 called a calibration rig or calibration pattern, and OpenCV has built-in support for a chessboard as
@@ -1715,6 +1719,10 @@ The algorithm performs the following steps:
     that is, the total sum of squared distances between the observed feature points imagePoints and
     the projected (using the current estimates for camera parameters and the poses) object points
     objectPoints. See @ref projectPoints for details.
+
+-   In practice, robust acquisition is essential for stable results: use multiple board poses with
+    significant tilt, avoid collecting all views at a single working distance, span the expected
+    working-distance range (a larger board with larger squares can help for longer distances).
 
 @note
     If you use a non-square (i.e. non-N-by-N) grid and @ref findChessboardCorners for calibration,
@@ -1801,8 +1809,8 @@ less precise and less stable in some rare cases.
 @return the overall RMS re-projection error.
 
 The function estimates the intrinsic camera parameters and extrinsic parameters for each of the
-views. The algorithm is based on @cite Zhang2000, @cite BouguetMCT and @cite strobl2011iccv. See
-#calibrateCamera for other detailed explanations.
+views. The object-releasing extension follows @cite strobl2011iccv and uses the same optimization
+core as #calibrateCamera. See #calibrateCamera for other detailed explanations.
 @sa
    calibrateCamera, findChessboardCorners, solvePnP, initCameraMatrix2D, stereoCalibrate, undistort
  */
@@ -3874,7 +3882,7 @@ void initUndistortRectifyMap(InputArray cameraMatrix, InputArray distCoeffs,
                              Size size, int m1type, OutputArray map1, OutputArray map2);
 
 /** @brief Computes the projection and inverse-rectification transformation map. In essense, this is the inverse of
-#initUndistortRectifyMap to accomodate stereo-rectification of projectors ('inverse-cameras') in projector-camera pairs.
+#initUndistortRectifyMap to accommodate stereo-rectification of projectors ('inverse-cameras') in projector-camera pairs.
 
 The function computes the joint projection and inverse rectification transformation and represents the
 result in the form of maps for #remap. The projected image looks like a distorted version of the original which,
@@ -4094,7 +4102,7 @@ namespace fisheye
     the number of points in the view.
     @param imagePoints Output array of image points, 2xN/Nx2 1-channel or 1xN/Nx1 2-channel, or
     vector\<Point2f\>.
-    @param affine
+    @param affine Pose of the camera.
     @param K Camera intrinsic matrix \f$\cameramatrix{K}\f$.
     @param D Input vector of distortion coefficients \f$\distcoeffsfisheye\f$.
     @param alpha The skew coefficient.
