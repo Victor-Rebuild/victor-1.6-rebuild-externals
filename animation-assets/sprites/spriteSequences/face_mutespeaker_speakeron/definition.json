@@ -1,6 +1,6 @@
 
 {
-  "loop" : "doNothing",
+  "loop" : "doNothing", 
   "sequence" :[
     {
       "segmentType" : "straightThrough",
