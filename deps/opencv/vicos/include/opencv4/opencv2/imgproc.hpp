@@ -2529,11 +2529,9 @@ with the WARP_RELATIVE_MAP flag :
 where values of pixels with non-integer coordinates are computed using one of available
 interpolation methods. \f$map_x\f$ and \f$map_y\f$ can be encoded as separate floating-point maps
 in \f$map_1\f$ and \f$map_2\f$ respectively, or interleaved floating-point maps of \f$(x,y)\f$ in
-\f$map_1\f$, or fixed-point maps created by using #convertMaps. Fixed-point maps
-use a more compact representation, which can reduce memory bandwidth and benefit
-repeated remap calls that reuse the same map. Performance gains vary by hardware
-and are typically modest; measure before converting. In the converted case,
-\f$map_1\f$ contains pairs (cvFloor(x),
+\f$map_1\f$, or fixed-point maps created by using #convertMaps. The reason you might want to
+convert from floating to fixed-point representations of a map is that they can yield much faster
+(\~2x) remapping operations. In the converted case, \f$map_1\f$ contains pairs (cvFloor(x),
 cvFloor(y)) and \f$map_2\f$ contains indices in a table of interpolation coefficients.
 
 This function cannot operate in-place.
@@ -2542,7 +2540,7 @@ This function cannot operate in-place.
 @param dst Destination image. It has the same size as map1 and the same type as src .
 @param map1 The first map of either (x,y) points or just x values having the type CV_16SC2 ,
 CV_32FC1, or CV_32FC2. See #convertMaps for details on converting a floating point
-representation to fixed-point.
+representation to fixed-point for speed.
 @param map2 The second map of y values having the type CV_16UC1, CV_32FC1, or none (empty map
 if map1 is (x,y) points), respectively.
 @param interpolation Interpolation method (see #InterpolationFlags). The methods #INTER_AREA
@@ -4086,14 +4084,9 @@ CV_EXPORTS_W int connectedComponentsWithStats(InputArray image, OutputArray labe
 
 /** @brief Finds contours in a binary image.
 
-The function retrieves contours from the binary image. The contours
+The function retrieves contours from the binary image using the algorithm @cite Suzuki85 . The contours
 are a useful tool for shape analysis and object detection and recognition. See squares.cpp in the
 OpenCV sample directory.
-
-@note Since OpenCV 4.14, when mode is #RETR_LIST and no hierarchy is requested, this function
-automatically uses the TRUCO parallel algorithm @cite TRUCO2026, a scalable lock-free method for
-contour extraction. In all other cases, the sequential @cite Suzuki85 algorithm is used.
-
 @note Since opencv 3.2 source image is not modified by this function.
 
 @param image Source, an 8-bit single-channel image. Non-zero pixels are treated as 1's. Zero
@@ -4123,7 +4116,6 @@ CV_EXPORTS_W void findContours( InputArray image, OutputArrayOfArrays contours,
 CV_EXPORTS void findContours( InputArray image, OutputArrayOfArrays contours,
                               int mode, int method, Point offset = Point());
 
-
 //! @brief Find contours using link runs algorithm
 //!
 //! This function implements an algorithm different from cv::findContours:
@@ -4136,7 +4128,6 @@ CV_EXPORTS_W void findContoursLinkRuns(InputArray image, OutputArrayOfArrays con
 
 //! @overload
 CV_EXPORTS_W void findContoursLinkRuns(InputArray image, OutputArrayOfArrays contours);
-
 
 /** @brief Approximates a polygonal curve(s) with the specified precision.
 

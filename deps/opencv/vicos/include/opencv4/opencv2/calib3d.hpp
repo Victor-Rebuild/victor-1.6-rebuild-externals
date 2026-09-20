@@ -881,8 +881,7 @@ CV_EXPORTS_W Vec3d RQDecomp3x3( InputArray src, OutputArray mtxR, OutputArray mt
 @param projMatrix 3x4 input projection matrix P.
 @param cameraMatrix Output 3x3 camera intrinsic matrix \f$\cameramatrix{A}\f$.
 @param rotMatrix Output 3x3 external rotation matrix R.
-@param transVect Output 4x1 vector representing the camera position in homogeneous coordinates.
-To obtain the translation vector, use t = -rotMatrix * transVect[:3].
+@param transVect Output 4x1 translation vector T.
 @param rotMatrixX Optional 3x3 rotation matrix around x-axis.
 @param rotMatrixY Optional 3x3 rotation matrix around y-axis.
 @param rotMatrixZ Optional 3x3 rotation matrix around z-axis.
@@ -4172,7 +4171,7 @@ namespace fisheye
         which are dimensionless coordinates in the camera's focal plane, independent of intrinsic parameters.
 
     @note **Fisheye vs. Standard Model:**
-    Use this function (#cv::fisheye::undistortPoints) for fisheye cameras (wide-angle lenses).
+    Use this function (#fisheye::undistortPoints) for fisheye cameras (wide-angle lenses).
     For standard pinhole cameras, use #undistortPoints instead. The fisheye model uses a different distortion
     parameterization (4 coefficients) compared to the standard model (4-14 coefficients).
 
@@ -4221,14 +4220,14 @@ namespace fisheye
 
     The function transforms an image to compensate radial lens distortion.
 
-    The function is simply a combination of #cv::fisheye::initUndistortRectifyMap (with unity R ) and #remap
+    The function is simply a combination of #fisheye::initUndistortRectifyMap (with unity R ) and #remap
     (with bilinear interpolation). See the former function for details of the transformation being
     performed.
 
     See below the results of undistortImage.
        -   a\) result of undistort of perspective camera model (all possible coefficients (k_1, k_2, k_3,
             k_4, k_5, k_6) of distortion were optimized under calibration)
-        -   b\) result of #cv::fisheye::undistortImage of fisheye camera model (all possible coefficients (k_1, k_2,
+        -   b\) result of #fisheye::undistortImage of fisheye camera model (all possible coefficients (k_1, k_2,
             k_3, k_4) of fisheye distortion were optimized under calibration)
         -   c\) original image was captured with fisheye lens
 
