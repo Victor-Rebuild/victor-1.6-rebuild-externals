@@ -46,11 +46,6 @@
 #include "random.h"
 #include "saving.h"
 
-#if defined(__clang__) || defined(__GNUC__)
-#define CV_RESTRICT __restrict__
-#else
-#define CV_RESTRICT
-#endif
 
 namespace cvflann
 {
@@ -325,7 +320,9 @@ private:
         int cnt = std::min((int)SAMPLE_MEAN+1, count);
         for (int j = 0; j < cnt; ++j) {
             ElementType* v = dataset_[ind[j]];
-            Sum(v, veclen_, mean_);
+            for (size_t k=0; k<veclen_; ++k) {
+                mean_[k] += v[k];
+            }
         }
         for (size_t k=0; k<veclen_; ++k) {
             mean_[k] /= cnt;
@@ -334,7 +331,10 @@ private:
         /* Compute variances (no need to divide by count). */
         for (int j = 0; j < cnt; ++j) {
             ElementType* v = dataset_[ind[j]];
-            Var(v, mean_, veclen_, var_);
+            for (size_t k=0; k<veclen_; ++k) {
+                DistanceType dist = v[k] - mean_[k];
+                var_[k] += dist * dist;
+            }
         }
         /* Select one of the highest variance indices at random. */
         cutfeat = selectDivision(var_);
@@ -584,18 +584,6 @@ private:
         RAND_DIM=5
     };
 
-    void Sum(const ElementType* CV_RESTRICT data, size_t len, DistanceType* CV_RESTRICT mean) {
-        for (size_t k=0; k<len; ++k) {
-            mean[k] += data[k];
-        }
-    }
-
-    void Var(const ElementType* CV_RESTRICT data, const DistanceType* CV_RESTRICT mean, size_t len, DistanceType*CV_RESTRICT var) {
-        for (size_t k=0; k<len; ++k) {
-            DistanceType dist = data[k] - mean[k];
-            var[k] += dist * dist;
-        }
-    }
 
     /**
      * Number of randomized trees that are used

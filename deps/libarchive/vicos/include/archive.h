@@ -177,7 +177,7 @@ __LA_DECL int		archive_version_number(void);
 /*
  * Textual name/version of the library, useful for version displays.
  */
-#define	ARCHIVE_VERSION_ONLY_STRING "3.9.0dev"
+#define	ARCHIVE_VERSION_ONLY_STRING "3.9.0"
 #define	ARCHIVE_VERSION_STRING "libarchive " ARCHIVE_VERSION_ONLY_STRING
 __LA_DECL const char *	archive_version_string(void);
 
@@ -210,7 +210,9 @@ __LA_DECL const char *  archive_openssl_version(void);
 __LA_DECL const char *  archive_libmd_version(void);
 __LA_DECL const char *  archive_commoncrypto_version(void);
 __LA_DECL const char *  archive_cng_version(void);
+#if ARCHIVE_VERSION_NUMBER < 4000000
 __LA_DECL const char *  archive_wincrypt_version(void);
+#endif
 __LA_DECL const char *  archive_librichacl_version(void);
 __LA_DECL const char *  archive_libacl_version(void);
 __LA_DECL const char *  archive_libattr_version(void);
@@ -1091,7 +1093,7 @@ __LA_DECL int	archive_read_disk_set_matching(struct archive *,
 		    void *_client_data);
 __LA_DECL int	archive_read_disk_set_metadata_filter_callback(struct archive *,
 		    int (*_metadata_filter_func)(struct archive *, void *,
-			struct archive_entry *), void *_client_data);
+		    	struct archive_entry *), void *_client_data);
 
 /* Simplified cleanup interface;
  * This calls archive_read_free() or archive_write_free() as needed. */
